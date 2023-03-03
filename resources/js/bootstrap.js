@@ -8,6 +8,8 @@ import axios from 'axios';
 window.axios = axios;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 import 'flowbite';
+import Swal from 'sweetalert2';
+
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -30,3 +32,31 @@ import 'flowbite';
 //     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
 //     enabledTransports: ['ws', 'wss'],
 // });
+if(typeof error !== 'undefined') {
+    Swal.fire({
+        title: error,
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+        },
+        timer: 2000,
+        showConfirmButton: false,
+        icon: 'error'
+    })
+}
+if(typeof success !== 'undefined') {
+    Swal.fire({
+        title: success,
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+        },
+        timer: 2000,
+        showConfirmButton: false,
+        icon: 'success'
+    })
+}
